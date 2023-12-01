@@ -1,7 +1,8 @@
+import Navbar from "@/components/Navbar";
 import React from "react";
 
 const MainPage = () => {
-  return <div> Siema wariacie kurwa tego </div>;
+  return <div className="bg-black">siema</div>;
 };
 
 export default MainPage;
