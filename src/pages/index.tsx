@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import React from "react";
 
 const MainPage = () => {
-  return <div className="bg-black">siema</div>;
+  return <Navbar />;
 };
 
 export default MainPage;
