@@ -7,6 +7,8 @@
  */
 const Destinations = {
     Home: '/',
+    About: '/about',
+    Login: '/login',
   } as const;
   
   export type Destination = keyof typeof Destinations;

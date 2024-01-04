@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93 83">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #301408;
+        stroke: #281812;
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <g id="grid_960_x_960_2_" data-name="grid 960 x (960/2)">
+    <rect class="cls-1" x="1.5" y="1.5" width="90" height="80" rx="4" ry="4"/>
+  </g>
+</svg>
