@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 945.4 5">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ffdebd;
+        stroke: #281812;
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+        stroke-width: 5px;
+      }
+    </style>
+  </defs>
+  <g id="nmapisy">
+    <line class="cls-1" x1="942.9" y1="2.5" x2="2.5" y2="2.5"/>
+  </g>
+</svg>

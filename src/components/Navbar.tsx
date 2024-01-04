@@ -7,7 +7,6 @@ const Navbar = () => {
   return (
     <div className="text-white">
       <ButtonLink to="Home">Home</ButtonLink>
-      <ImageHandler />
     </div>
   );
 };
