@@ -1,10 +1,9 @@
 import React, { Children } from "react";
-import Destinations from "../destinations";
 import Link from "next/link";
 import ImageHandler from "./ImageHandler";
 
 interface Props {
-  to: keyof typeof Destinations;
+  to: string;
   bgType: string;
   w: string;
   h: string;

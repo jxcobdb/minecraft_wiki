@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "@/components/Button";
 import ButtonLink from "./ButtonLink";
 import ImageHandler from "./ImageHandler";
 
@@ -15,7 +14,7 @@ const Navbar = () => {
         minHeight: "140px",
       }}>
       <div className="flex flex-container">
-        <ImageHandler imagePath="/assets/Logo.svg" w="398" h="244" />
+        <ButtonLink bgType="/assets/Logo.svg" to="/" w="370" h="244" />
       </div>
       <div className="flex flex-col justify-center">
         <div className="flex">
@@ -24,13 +23,13 @@ const Navbar = () => {
 
         <ul className="flex">
           <li className="flex-1">
-            <ButtonLink bgType="/assets/Home.svg" to="Home" w="130" h="50" />
+            <ButtonLink bgType="/assets/Home.svg" to="/" w="130" h="50" />
           </li>
           <li className="flex-1">
-            <ButtonLink bgType="/assets/About.svg" to="Home" w="130" h="50" />
+            <ButtonLink bgType="/assets/About.svg" to="/about" w="130" h="50" />
           </li>
           <li className="flex-1">
-            <ButtonLink bgType="/assets/Login.svg" to="Home" w="130" h="50" />
+            <ButtonLink bgType="/assets/Login.svg" to="/login" w="130" h="50" />
           </li>
         </ul>
       </div>
