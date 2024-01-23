@@ -8,7 +8,9 @@ interface Props {
 }
 
 const ImageHandler: React.FC<Props> = ({ imagePath, h, w }) => {
-  return <img src={imagePath} width={w} height={h}></img>;
+  return (
+    <img className="object-contain" src={imagePath} width={w} height={h}></img>
+  );
 };
 
 export default ImageHandler;
