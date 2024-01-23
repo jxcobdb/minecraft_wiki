@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import React from "react";
 import Link from "next/link";
 import ImageHandler from "@/components/ImageHandler";
+import ItemContainer from "@/components/ItemContainer";
 
 interface Data {
   block: Block[];
@@ -93,22 +94,10 @@ const MainPage = () => {
   return (
     <div>
       <Navbar />
-      <div className="py-6 px-6 content-center justify-center grid grid-cols-5 gap-10">
+      <div className="pt-14 px-10 pb-14 grid grid-center grid-cols-5 grid-flow-cols gap-5">
         {data.block.map((item) => (
           <div key={item.id_block}>
-            <div
-              className="flex items-center justify-center"
-              style={{
-                backgroundImage: "url(/assets/GridSlot.svg)",
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                justifyContent: "center",
-                padding: "10px",
-                borderRadius: "10px",
-                width: "300px",
-                height: "200px",
-              }}>
+            <ItemContainer>
               <Link
                 href={"/block/" + item.id_block}
                 className="object-contain h-fit">
@@ -118,29 +107,70 @@ const MainPage = () => {
                   h="100"
                 />
               </Link>
-            </div>
+            </ItemContainer>
+          </div>
+        ))}
+        {data.armor.map((item) => (
+          <div key={item.id_armor}>
+            <ItemContainer>
+              <Link
+                href={"/block/" + item.id_armor}
+                className="object-contain h-fit">
+                <ImageHandler
+                  imagePath={"/itemphotos/" + item.p_eq}
+                  w="100"
+                  h="100"
+                />
+              </Link>
+            </ItemContainer>
+          </div>
+        ))}
+        {data.food.map((item) => (
+          <div key={item.id_food}>
+            <ItemContainer>
+              <Link
+                href={"/block/" + item.id_food}
+                className="object-contain h-fit">
+                <ImageHandler
+                  imagePath={"/itemphotos/" + item.p_eq}
+                  w="100"
+                  h="100"
+                />
+              </Link>
+            </ItemContainer>
+          </div>
+        ))}
+        {data.other.map((item) => (
+          <div key={item.id_other}>
+            <ItemContainer>
+              <Link
+                href={"/block/" + item.id_other}
+                className="object-contain h-fit">
+                <ImageHandler
+                  imagePath={"/itemphotos/" + item.p_eq}
+                  w="100"
+                  h="100"
+                />
+              </Link>
+            </ItemContainer>
+          </div>
+        ))}
+        {data.tool.map((item) => (
+          <div key={item.id_tool}>
+            <ItemContainer>
+              <Link
+                href={"/block/" + item.id_tool}
+                className="object-contain h-fit">
+                <ImageHandler
+                  imagePath={"/itemphotos/" + item.p_eq}
+                  w="100"
+                  h="100"
+                />
+              </Link>
+            </ItemContainer>
           </div>
         ))}
       </div>
-
-      {/* <table className="flex grid">
-        <tbody>
-          {data.block.map((item) => (
-            <tr key={item.id_block}>
-              <td className="border p-4" key={item.id_block}>
-                <Link href={"/block/" + item.id_block}>{item.p_eq}</Link>
-              </td>
-            </tr>
-          ))}
-          {data.armor.map((item) => (
-            <tr key={item.id_armor}>
-              <td className="border p-4" key={item.id_armor}>
-                <Link href={"/armor/" + item.id_armor}>{item.p_eq}</Link>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table> */}
     </div>
   );
 };
