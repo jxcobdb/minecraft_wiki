@@ -4,9 +4,7 @@ import React from "react";
 import Link from "next/link";
 import ImageHandler from "@/components/ImageHandler";
 import ItemContainer from "@/components/ItemContainer";
-import ComContainer from "@/components/ComConteiner";
-import GridContainer from "@/components/jakosladnie";
-import SortBar from "@/components/jakosladnie";
+import SortBar from "@/components/SortBar";
 
 
 interface Data {
@@ -106,7 +104,7 @@ const MainPage = () => {
         <div className="pt-14 px-10 pb-14 grid grid-center grid-cols-5 grid-flow-cols gap-8 pt-0">
           {data.block.map((item) => (
             <div key={item.id_block}>
-              <ItemContainer>
+              <ItemContainer type="animated">
                 <Link
                   href={"/block/" + item.id_block}
                   className="object-contain h-fit">
@@ -123,7 +121,7 @@ const MainPage = () => {
 ))}
           {data.armor.map((item) => (
             <div key={item.id_armor}>
-              <ItemContainer>
+              <ItemContainer type="animated">
                 <Link
                   href={"/armor/" + item.id_armor}
                   className="object-contain h-fit">
@@ -138,7 +136,7 @@ const MainPage = () => {
           ))}
           {data.food.map((item) => (
             <div key={item.id_food}>
-              <ItemContainer>
+              <ItemContainer type="animated">
                 <Link
                   href={"/food/" + item.id_food}
                   className="object-contain h-fit">
@@ -153,7 +151,7 @@ const MainPage = () => {
           ))}
           {data.other.map((item) => (
             <div key={item.id_other}>
-              <ItemContainer>
+              <ItemContainer type="animated">
                 <Link
                   href={"/other/" + item.id_other}
                   className="object-contain h-fit">
@@ -168,7 +166,7 @@ const MainPage = () => {
           ))}
           {data.tool.map((item) => (
             <div key={item.id_tool}>
-              <ItemContainer>
+              <ItemContainer type="animated">
                 <Link
                   href={"/tool/" + item.id_tool}
                   className="object-contain h-fit">

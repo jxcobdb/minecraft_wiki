@@ -37,11 +37,7 @@ Dziękuję, że jesteś tutaj.
 
 Z kreatywnością i klockami,
 [Twoje Imię/Nick]</p>
-
 </div>
-
-
-
 <div className="grid grid-cols-2 gap-4">
 
 <div className="col-span-1 flex justify-center items-center ml-12">

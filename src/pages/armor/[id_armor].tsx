@@ -34,7 +34,7 @@ const BlockItemPage = () => {
   const router = useRouter();
   const { id_block, table } = router.query;
 
-  const [blockData, setBlockData] = useState<Block | undefined>({
+  const [blockData, setBlockData] = useState<Block>({
     blast_res: 0,
     flamable: 0,
     hardness: 0,
@@ -78,47 +78,23 @@ const BlockItemPage = () => {
         )}
         <div className="flex flex-start flex-cols content-center">
           <div className="flex w-1/2 content-center justify-evenly">
-            <ItemContainer type="default">
-              <ImageHandler
-                imagePath={blockData?.p_eq ? `/itemphotos/${blockData.p_eq}` : ""}
-                w="250"
-                h="250"
-              />
-            </ItemContainer>
+
+    <ItemContainer type="default">
+    <ImageHandler
+    imagePath={blockData?.p_eq ? `/itemphotos/${blockData.p_eq}` : ""}
+    w="250"
+    h="250"
+  />
+</ItemContainer>
+
           </div>
           <div className="flex-1 mt-2 flex-wrap mr-52">
-            <div className="col-span-1 bg p-4 rounded-lg shadow-md" style={{ backgroundImage: 'url("/assets/Background.svg")', backgroundSize:'cover'}}>
-              {blockData && (
-                <div className="text-white text-2xl">
-                  {blockData.info}
-                </div>
-              )}
-              {blockData && (
-                <div className="mt-4 text-white text-xl flex justify-center">
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td>Flammable:</td>
-                        <td>{blockData.flamable === 1 ? "Yes" : "No"}</td>
-                      </tr>
-                      <tr>
-                        <td>Stackable:</td>
-                        <td>{blockData.stackable === 1 ? "Yes": "No"}</td>
-                      </tr>
-                      <tr>
-                        <td>Hardness:</td>
-                        <td>{blockData.hardness}</td>
-                      </tr>
-                      <tr>
-                        <td>Blast Resistance:</td>
-                        <td>{blockData.blast_res}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  
-                </div>
-                
-              )}
+          <div className="col-span-1 bg p-4 rounded-lg shadow-md" style={{ backgroundImage: 'url("/assets/Background.svg")', backgroundSize:'cover'}}>
+            {blockData && (
+              <div className="text-white text-2xl">
+                {blockData.info}
+              </div>
+            )}
             </div>
           </div>
         </div>
