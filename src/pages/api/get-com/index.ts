@@ -1,16 +1,17 @@
-import sql, { ConnectionPool } from 'mssql';
+import sql, { ConnectionPool, query } from 'mssql';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { setupDatabase } from '../setup';
 
 const pool = setupDatabase();
 
-const GetCom = async (req: NextApiRequest, res: NextApiResponse) => {
+const GetComData = async (req: NextApiRequest, res: NextApiResponse) => {
+    
     try {
+        const id = req.query.id as string;
+        const table = req.query.table as string;
         await pool.connect();
+        
         console.log('Connected to the database');
-
-        const id = req.query.id as string | undefined;
-        const table = req.query.table as string | undefined;
 
         const allowedTables = ['com_block', 'com_armor', 'com_food', 'com_other', 'com_tool'];
         if (!table || !allowedTables.includes(table)) {
@@ -29,17 +30,19 @@ const GetCom = async (req: NextApiRequest, res: NextApiResponse) => {
 
         const request = pool.request();
         const result = await request
-            .input('id', sql.Int, parseInt(id, 10))
-            .query('SELECT id_com, id_father, id_godfather, login, value  FROM com_${table}, users where com_${table}.id_user = users.id_user and id_father IS NULL; and id_item = @id');
-        
+        .input('id', sql.Int, parseInt(id, 10))
+        .query('SELECT * FROM ${table} WHERE id = @id and ${table}.id_user = users.id_user');
+
+
+
         res.status(200).json({
             success: true,
             data: {
-                [table]: result.recordset,
+                output: result.recordset,
             },
         });
     } catch (err) {
-        console.error(err);
+        console.error('Error in GetItemData:', err);
         res.status(500).json({
             success: false,
             reason: 'Internal Server Error',
@@ -49,4 +52,4 @@ const GetCom = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 };
 
-export default GetCom;
+export default GetComData;

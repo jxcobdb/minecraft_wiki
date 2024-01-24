@@ -3,12 +3,13 @@ import { useRouter } from "next/router";
 import Navbar from "@/components/Navbar";
 import ImageHandler from "@/components/ImageHandler";
 import ItemContainer from "@/components/ItemContainer";
+import ComContainer from "@/components/ComConteiner";
 
 interface Block {
   blast_res: number;
   flamable: number;
   hardness: number;
-  id_block: number;
+  id: number;
   id_world: number;
   info: string;
   name: string;
@@ -18,41 +19,21 @@ interface Block {
 }
 
 interface Com {
-  id_com: number;
-  id_godfather: number;
-  id_father: number;
-  id_item: number;
   login: string;
   value: string;
 }
 
-interface Data {
-  com: Com[];
-}
 
 const BlockItemPage = () => {
   const router = useRouter();
-  const { id_block, table } = router.query;
+  const {id_block} = router.query;
 
-  // console.log('ID Item:', id_item);
-  // console.log('Table:', table);
-
-  // const getCom = async () => {
-  //   const response = await fetch("/api/get-data");
-  //   const json = await response.json();
-  //   setData(json.data);
-  //   console.log(json);
-  // };
-
-  // React.useEffect(() => {
-  //   getCom();
-  // }, []);
 
   const [blockData, setBlockData] = useState<Block>({
     blast_res: 0,
     flamable: 0,
     hardness: 0,
-    id_block: 0,
+    id: 0,
     id_world: 0,
     info: "",
     name: "",
@@ -60,13 +41,17 @@ const BlockItemPage = () => {
     p_eq: "",
     stackable: 0,
   });
+  const [comData, setComData] = useState<Com>({
+    login: "",
+    value: "",
+
+  });
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `/api/get-item-details?id=${id_block}&table=block`
-        );
+        const response = await fetch(`/api/get-item-details?id=${id_block}&table=block`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -80,6 +65,26 @@ const BlockItemPage = () => {
 
     fetchData();
   }, [id_block]);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`/api/get-com?id=${id_block}&table=com_block`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const json = await response.json();
+        console.log("API Response:", json);
+        setComData(json.data.output[0]);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+  
+    fetchData();
+  }, [id_block]);
+
 
   return (
     <div>
@@ -110,6 +115,9 @@ const BlockItemPage = () => {
             )}
           </div>
         </div>
+      </div>
+      <div>
+        <ComContainer value={comData.value} login={comData.login}/>
       </div>
     </div>
   );
