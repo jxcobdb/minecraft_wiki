@@ -3,3 +3,13 @@
 @tailwind utilities;
 
 
+body {
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    box-sizing: border-box;
+    background-image: url('/assets/Background.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }

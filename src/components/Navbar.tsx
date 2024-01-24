@@ -5,13 +5,14 @@ import ImageHandler from "./ImageHandler";
 const Navbar = () => {
   return (
     <div
-      className="flex"
+      className="flex sticky top-0"
       style={{
         backgroundImage: "url(/assets/NavBG.svg)",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        minHeight: "140px",
+        minHeight: "100px",
+        zIndex: 100,
       }}>
       <div className="flex flex-container">
         <ButtonLink bgType="/assets/Logo.svg" to="/" w="370" h="244" />

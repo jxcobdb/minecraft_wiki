@@ -94,82 +94,84 @@ const MainPage = () => {
   return (
     <div>
       <Navbar />
-      <div className="pt-14 px-10 pb-14 grid grid-center grid-cols-5 grid-flow-cols gap-5">
-        {data.block.map((item) => (
-          <div key={item.id_block}>
-            <ItemContainer>
-              <Link
-                href={"/block/" + item.id_block}
-                className="object-contain h-fit">
-                <ImageHandler
-                  imagePath={"/itemphotos/" + item.p_eq}
-                  w="100"
-                  h="100"
-                />
-              </Link>
-            </ItemContainer>
-          </div>
-        ))}
-        {data.armor.map((item) => (
-          <div key={item.id_armor}>
-            <ItemContainer>
-              <Link
-                href={"/block/" + item.id_armor}
-                className="object-contain h-fit">
-                <ImageHandler
-                  imagePath={"/itemphotos/" + item.p_eq}
-                  w="100"
-                  h="100"
-                />
-              </Link>
-            </ItemContainer>
-          </div>
-        ))}
-        {data.food.map((item) => (
-          <div key={item.id_food}>
-            <ItemContainer>
-              <Link
-                href={"/block/" + item.id_food}
-                className="object-contain h-fit">
-                <ImageHandler
-                  imagePath={"/itemphotos/" + item.p_eq}
-                  w="100"
-                  h="100"
-                />
-              </Link>
-            </ItemContainer>
-          </div>
-        ))}
-        {data.other.map((item) => (
-          <div key={item.id_other}>
-            <ItemContainer>
-              <Link
-                href={"/block/" + item.id_other}
-                className="object-contain h-fit">
-                <ImageHandler
-                  imagePath={"/itemphotos/" + item.p_eq}
-                  w="100"
-                  h="100"
-                />
-              </Link>
-            </ItemContainer>
-          </div>
-        ))}
-        {data.tool.map((item) => (
-          <div key={item.id_tool}>
-            <ItemContainer>
-              <Link
-                href={"/block/" + item.id_tool}
-                className="object-contain h-fit">
-                <ImageHandler
-                  imagePath={"/itemphotos/" + item.p_eq}
-                  w="100"
-                  h="100"
-                />
-              </Link>
-            </ItemContainer>
-          </div>
-        ))}
+      <div className="flex items-center justify-center pt-14 pb-14 ">
+        <div className="grid grid-center grid-cols-5 grid-flow-cols gap-9">
+          {data.block.map((item) => (
+            <div key={item.id_block}>
+              <ItemContainer>
+                <Link
+                  href={"/block/" + item.id_block}
+                  className="object-contain h-fit">
+                  <ImageHandler
+                    imagePath={"/itemphotos/" + item.p_eq}
+                    w="100"
+                    h="100"
+                  />
+                </Link>
+              </ItemContainer>
+            </div>
+          ))}
+          {data.armor.map((item) => (
+            <div key={item.id_armor}>
+              <ItemContainer>
+                <Link
+                  href={"itempage/armor/" + item.id_armor}
+                  className="object-contain h-fit">
+                  <ImageHandler
+                    imagePath={"/itemphotos/" + item.p_eq}
+                    w="100"
+                    h="100"
+                  />
+                </Link>
+              </ItemContainer>
+            </div>
+          ))}
+          {data.food.map((item) => (
+            <div key={item.id_food}>
+              <ItemContainer>
+                <Link
+                  href={"itempage/food/" + item.id_food}
+                  className="object-contain h-fit">
+                  <ImageHandler
+                    imagePath={"/itemphotos/" + item.p_eq}
+                    w="100"
+                    h="100"
+                  />
+                </Link>
+              </ItemContainer>
+            </div>
+          ))}
+          {data.other.map((item) => (
+            <div key={item.id_other}>
+              <ItemContainer>
+                <Link
+                  href={"itempage/other/" + item.id_other}
+                  className="object-contain h-fit">
+                  <ImageHandler
+                    imagePath={"/itemphotos/" + item.p_eq}
+                    w="100"
+                    h="100"
+                  />
+                </Link>
+              </ItemContainer>
+            </div>
+          ))}
+          {data.tool.map((item) => (
+            <div key={item.id_tool}>
+              <ItemContainer>
+                <Link
+                  href={"itempage/tool/" + item.id_tool}
+                  className="object-contain h-fit">
+                  <ImageHandler
+                    imagePath={"/itemphotos/" + item.p_eq}
+                    w="100"
+                    h="100"
+                  />
+                </Link>
+              </ItemContainer>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
