@@ -47,11 +47,8 @@ Z kreatywnością i klockami,
 <div className="col-span-1 flex justify-center items-center ml-12">
           <h2 className="text-lg font-semibold  text-white text-center pt-24 text-4xl mb-10">Zespół pracujący nad projektem:</h2>
           <p className="text-white">   
-</p>
-          
+</p>    
 </div>
-
-
   </div>
   <Profile />
 
@@ -70,23 +67,7 @@ Z kreatywnością i klockami,
           </p>
 </div>
 </div>
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   );
 };
 

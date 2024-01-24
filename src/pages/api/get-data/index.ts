@@ -5,7 +5,6 @@ import { setupDatabase } from '../setup';
 const pool = setupDatabase()
 
 const GetDataHandler = async(req: NextApiRequest, res: NextApiResponse) => {
-    // console.log(req.query.type, 'chuj')
     try {
         await pool.connect();
         console.log('Connected to the database');
