@@ -15,6 +15,8 @@ const GetDataHandler = async(req: NextApiRequest, res: NextApiResponse) => {
         const foodResult = await request.query('SELECT * FROM food');
         const otherResult = await request.query('SELECT * FROM other');
         const toolResult = await request.query('SELECT * FROM tool');
+        const comResult = await request.query('SELECT id_com, id_father, id_godfather, login, value  FROM com_global, users where com_global.id_user = users.id_user and id_father IS NULL;');
+
 
         res.status(200).json({
             success: true,
@@ -24,6 +26,7 @@ const GetDataHandler = async(req: NextApiRequest, res: NextApiResponse) => {
                 food: foodResult.recordset,
                 other: otherResult.recordset,
                 tool: toolResult.recordset,
+                com: comResult.recordset,
             },
         })
     } catch (err) {
