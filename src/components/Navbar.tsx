@@ -15,6 +15,8 @@ const Navbar = () => {
         zIndex: 1000,
       }}
     >
+
+      }}>
       <div className="flex flex-container">
         <ButtonLink bgType="/assets/Logo.svg" to="/" w="270" h="144" />
       </div>
