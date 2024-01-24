@@ -1,13 +1,10 @@
+import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Linia from "@/components/Linia";
-import React from "react";
+import SortBar from "@/components/Sortbar";
 import Link from "next/link";
 import ImageHandler from "@/components/ImageHandler";
 import ItemContainer from "@/components/ItemContainer";
-import ComContainer from "@/components/ComConteiner";
-import GridContainer from "@/components/jakosladnie";
-import SortBar from "@/components/jakosladnie";
-
 
 interface Data {
   block: Block[];
@@ -18,11 +15,12 @@ interface Data {
 }
 
 interface Block {
+  type: string;
   name: string;
   blast_res: number;
   flamable: number;
   hardness: number;
-  id_block: number;
+  id: number;
   id_world: number;
   info: string;
   p_craft: null;
@@ -31,9 +29,10 @@ interface Block {
 }
 
 interface Armor {
+  type: string;
   def: number;
   durabilisty: number;
-  id_armor: number;
+  id: number;
   id_armor_list: number;
   id_material: number;
   info: string;
@@ -42,8 +41,9 @@ interface Armor {
 }
 
 interface Food {
+  type: string;
   heal: number;
-  id_food: number;
+  id: number;
   info: string;
   name_food: string;
   p_craft: string;
@@ -51,7 +51,8 @@ interface Food {
 }
 
 interface Other {
-  id_other: number;
+  type: string;
+  id: number;
   info: string;
   name_other: string;
   p_craft: string;
@@ -60,12 +61,13 @@ interface Other {
 }
 
 interface Tool {
+  type: string;
   attack_speed: number;
   damage: number;
   dps: number;
   durability: number;
   id_material: number;
-  id_tool: number;
+  id: number;
   id_tool_list: number;
   id_tool_type: number;
   info: string;
@@ -75,7 +77,7 @@ interface Tool {
 }
 
 const MainPage = () => {
-  const [data, setData] = React.useState<Data>({
+  const [data, setData] = useState<Data>({
     armor: [],
     block: [],
     food: [],
@@ -83,109 +85,78 @@ const MainPage = () => {
     tool: [],
   });
 
+  const [filterKey, setFilterKey] = useState<string>("all");
+
   const getData = async () => {
     const response = await fetch("/api/get-data");
     const json = await response.json();
+    console.log(json);
     setData(json.data);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     getData();
   }, []);
 
-  console.log(data);
-  console.log(data.block);
+  const renderItems = (items: any[], idKey: string) => {
+    return items.map((item) => (
+      <div key={item.id}>
+        <ItemContainer>
+          <Link
+            href={`/${item.type}/${item.id}`}
+            className="object-contain h-fit">
+            <ImageHandler
+              imagePath={`/itemphotos/${item.p_eq}`}
+              w="100"
+              h="100"
+            />
+          </Link>
+        </ItemContainer>
+      </div>
+    ));
+  };
+
+  const getCategoryData = () => {
+    switch (filterKey) {
+      case "block":
+        return data.block;
+      case "armor":
+        return data.armor;
+      case "food":
+        return data.food;
+      case "other":
+        return data.other;
+      case "tool":
+        return data.tool;
+      case "all":
+        return [
+          ...data.block,
+          ...data.armor,
+          ...data.food,
+          ...data.other,
+          ...data.tool,
+        ];
+      default:
+        return [];
+    }
+  };
+
   return (
     <div>
       <Navbar />
       <Linia />
       <SortBar />
-      
 
       <div className="flex items-center justify-center py-15 z-10">
         <div className="pt-14 px-10 pb-14 grid grid-center grid-cols-5 grid-flow-cols gap-8 pt-0">
-          {data.block.map((item) => (
-            <div key={item.id_block}>
-              <ItemContainer>
-                <Link
-                  href={"/block/" + item.id_block}
-                  className="object-contain h-fit">
-                  <ImageHandler
-                    imagePath={"/itemphotos/" + item.p_eq}
-                    w="100"
-                    h="100"
-                    />
-                </Link>
-              </ItemContainer>
-              
-            </div>
-
-))}
-          {data.armor.map((item) => (
-            <div key={item.id_armor}>
-              <ItemContainer>
-                <Link
-                  href={"/armor/" + item.id_armor}
-                  className="object-contain h-fit">
-                  <ImageHandler
-                    imagePath={"/itemphotos/" + item.p_eq}
-                    w="100"
-                    h="100"
-                    />
-                </Link>
-              </ItemContainer>
-            </div>
-          ))}
-          {data.food.map((item) => (
-            <div key={item.id_food}>
-              <ItemContainer>
-                <Link
-                  href={"/food/" + item.id_food}
-                  className="object-contain h-fit">
-                  <ImageHandler
-                    imagePath={"/itemphotos/" + item.p_eq}
-                    w="100"
-                    h="100"
-                    />
-                </Link>
-              </ItemContainer>
-            </div>
-          ))}
-          {data.other.map((item) => (
-            <div key={item.id_other}>
-              <ItemContainer>
-                <Link
-                  href={"/other/" + item.id_other}
-                  className="object-contain h-fit">
-                  <ImageHandler
-                    imagePath={"/itemphotos/" + item.p_eq}
-                    w="100"
-                    h="100"
-                    />
-                </Link>
-              </ItemContainer>
-            </div>
-          ))}
-          {data.tool.map((item) => (
-            <div key={item.id_tool}>
-              <ItemContainer>
-                <Link
-                  href={"/tool/" + item.id_tool}
-                  className="object-contain h-fit">
-                  <ImageHandler
-                    imagePath={"/itemphotos/" + item.p_eq}
-                    w="100"
-                    h="100"
-                    />
-                </Link>
-              </ItemContainer>
-            </div>
-          ))}
+          {renderItems(getCategoryData(), filterKey)}
         </div>
       </div>
 
+      {/* <div>
+        <button onClick={() => setFilterKey("all")}>Show All</button>
+      </div> */}
     </div>
-    
   );
 };
 
