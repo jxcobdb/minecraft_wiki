@@ -8,13 +8,13 @@ import ComContainer from "@/components/ComConteiner";
 import GridContainer from "@/components/jakosladnie";
 import SortBar from "@/components/jakosladnie";
 
+
 interface Data {
   block: Block[];
   armor: Armor[];
   food: Food[];
   other: Other[];
   tool: Tool[];
-  com: Com[];
 }
 
 interface Block {
@@ -74,14 +74,6 @@ interface Tool {
   p_eq: string;
 }
 
-interface Com {
-  id_com: number;
-  id_godfather: number;
-  id_father: number;
-  login: string;
-  value: string;
-}
-
 const MainPage = () => {
   const [data, setData] = React.useState<Data>({
     armor: [],
@@ -89,7 +81,6 @@ const MainPage = () => {
     food: [],
     other: [],
     tool: [],
-    com: [],
   });
 
   const getData = async () => {
@@ -191,12 +182,6 @@ const MainPage = () => {
             </div>
           ))}
         </div>
-        {data.com.map((item) => (
-          <div key={item.id_com}>
-            <ComContainer login={item.login} value={item.value} />
-          </div>
-        ))}
-        
       </div>
 
     </div>
