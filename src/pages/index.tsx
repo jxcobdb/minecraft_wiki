@@ -3,7 +3,6 @@ import React from "react";
 import Link from "next/link";
 import ImageHandler from "@/components/ImageHandler";
 import ItemContainer from "@/components/ItemContainer";
-import ComContainer from "@/components/ComConteiner";
 
 interface Data {
   block: Block[];
@@ -11,7 +10,6 @@ interface Data {
   food: Food[];
   other: Other[];
   tool: Tool[];
-  com: Com[];
 }
 
 interface Block {
@@ -71,14 +69,6 @@ interface Tool {
   p_eq: string;
 }
 
-interface Com {
-  id_com: number;
-  id_godfather: number;
-  id_father: number;
-  login: string;
-  value: string;
-}
-
 const MainPage = () => {
   const [data, setData] = React.useState<Data>({
     armor: [],
@@ -86,7 +76,6 @@ const MainPage = () => {
     food: [],
     other: [],
     tool: [],
-    com: [],
   });
 
   const getData = async () => {
@@ -110,7 +99,7 @@ const MainPage = () => {
             <div key={item.id_block}>
               <ItemContainer>
                 <Link
-                  href={"/block/" + item.id_block}
+                  href={`/block/${item.id_block}?id_item=${item.id_block}&table="block"`}
                   className="object-contain h-fit">
                   <ImageHandler
                     imagePath={"/itemphotos/" + item.p_eq}
@@ -182,11 +171,7 @@ const MainPage = () => {
             </div>
           ))}
         </div>
-        {data.com.map((item) => (
-          <div key={item.id_com}>
-            <ComContainer login={item.login} value={item.value} />
-          </div>
-        ))}
+
       </div>
     </div>
   );
