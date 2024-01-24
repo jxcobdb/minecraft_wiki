@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Navbar from "@/components/Navbar";
@@ -18,7 +17,6 @@ interface Block {
   stackable: number;
 }
 
-
 interface Com {
   id_com: number;
   id_godfather: number;
@@ -34,24 +32,21 @@ interface Data {
 
 const BlockItemPage = () => {
   const router = useRouter();
-  const {id_item, table } = router.query;
+  const { id_block, table } = router.query;
 
-  console.log('ID Item:', id_item);
-  console.log('Table:', table);
+  // console.log('ID Item:', id_item);
+  // console.log('Table:', table);
 
+  // const getCom = async () => {
+  //   const response = await fetch("/api/get-data");
+  //   const json = await response.json();
+  //   setData(json.data);
+  //   console.log(json);
+  // };
 
-
-  const getCom = async () => {
-    const response = await fetch("/api/get-data");
-    const json = await response.json();
-    setData(json.data);
-    console.log(json);
-  };
-
-  React.useEffect(() => {
-    getCom();
-  }, []);
-
+  // React.useEffect(() => {
+  //   getCom();
+  // }, []);
 
   const [blockData, setBlockData] = useState<Block>({
     blast_res: 0,
