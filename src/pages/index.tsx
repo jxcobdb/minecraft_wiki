@@ -108,7 +108,7 @@ const MainPage = () => {
     <div>
       <Navbar />
       
-      {/* <div className="pt-14 px-10 pb-14 grid grid-center grid-cols-5 grid-flow-cols gap-5">
+  <div className="pt-14 px-10 pb-14 grid grid-center grid-cols-5 grid-flow-cols gap-5">
         {data.block.map((item) => (
           <div key={item.id_block}>
             <ItemContainer>
@@ -184,7 +184,7 @@ const MainPage = () => {
             </ItemContainer>
           </div>
         ))}
-      </div> */}
+      </div>
       {data.com.map((item) => (
           
           <div key={item.id_com}>
