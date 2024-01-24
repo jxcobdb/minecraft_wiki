@@ -1,9 +1,12 @@
 import Navbar from "@/components/Navbar";
+import Linia from "@/components/Linia";
 import React from "react";
 import Link from "next/link";
 import ImageHandler from "@/components/ImageHandler";
 import ItemContainer from "@/components/ItemContainer";
 import ComContainer from "@/components/ComConteiner";
+import GridContainer from "@/components/jakosladnie";
+import SortBar from "@/components/jakosladnie";
 
 interface Data {
   block: Block[];
@@ -104,8 +107,12 @@ const MainPage = () => {
   return (
     <div>
       <Navbar />
-      <div className="flex items-center justify-center py-15">
-        <div className="pt-14 px-10 pb-14 grid grid-center grid-cols-5 grid-flow-cols gap-5">
+      <Linia />
+      <SortBar />
+      
+
+      <div className="flex items-center justify-center py-15 z-10">
+        <div className="pt-14 px-10 pb-14 grid grid-center grid-cols-5 grid-flow-cols gap-8 pt-0">
           {data.block.map((item) => (
             <div key={item.id_block}>
               <ItemContainer>
@@ -116,11 +123,13 @@ const MainPage = () => {
                     imagePath={"/itemphotos/" + item.p_eq}
                     w="100"
                     h="100"
-                  />
+                    />
                 </Link>
               </ItemContainer>
+              
             </div>
-          ))}
+
+))}
           {data.armor.map((item) => (
             <div key={item.id_armor}>
               <ItemContainer>
@@ -131,7 +140,7 @@ const MainPage = () => {
                     imagePath={"/itemphotos/" + item.p_eq}
                     w="100"
                     h="100"
-                  />
+                    />
                 </Link>
               </ItemContainer>
             </div>
@@ -146,7 +155,7 @@ const MainPage = () => {
                     imagePath={"/itemphotos/" + item.p_eq}
                     w="100"
                     h="100"
-                  />
+                    />
                 </Link>
               </ItemContainer>
             </div>
@@ -161,7 +170,7 @@ const MainPage = () => {
                     imagePath={"/itemphotos/" + item.p_eq}
                     w="100"
                     h="100"
-                  />
+                    />
                 </Link>
               </ItemContainer>
             </div>
@@ -176,7 +185,7 @@ const MainPage = () => {
                     imagePath={"/itemphotos/" + item.p_eq}
                     w="100"
                     h="100"
-                  />
+                    />
                 </Link>
               </ItemContainer>
             </div>
@@ -187,8 +196,11 @@ const MainPage = () => {
             <ComContainer login={item.login} value={item.value} />
           </div>
         ))}
+        
       </div>
+
     </div>
+    
   );
 };
 
