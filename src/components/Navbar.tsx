@@ -11,11 +11,14 @@ const Navbar = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        minHeight: "100px",
-        zIndex: 100,
+        minHeight: "140px",
+        zIndex: 1000,
+      }}
+    >
+
       }}>
       <div className="flex flex-container">
-        <ButtonLink bgType="/assets/Logo.svg" to="/" w="370" h="244" />
+        <ButtonLink bgType="/assets/Logo.svg" to="/" w="270" h="144" />
       </div>
       <div className="flex flex-col justify-center">
         <div className="flex">
