@@ -31,7 +31,7 @@ const GetItemData = async (req: NextApiRequest, res: NextApiResponse) => {
         const request = pool.request();
         const result = await request
         .input('id', sql.Int, parseInt(id, 10))
-        .query(`SELECT * FROM ${table} WHERE id_block = @id`);
+        .query(`SELECT * FROM ${table} WHERE id = @id`);
 
 
 

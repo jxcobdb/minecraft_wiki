@@ -13,8 +13,7 @@ const Navbar = () => {
         backgroundPosition: "center",
         minHeight: "140px",
         zIndex: 2,
-      }}
-    >
+      }}>
       <div className="flex flex-container">
         <ButtonLink bgType="/assets/Logo.svg" to="/" w="270" h="144" />
       </div>
