@@ -93,19 +93,19 @@ const MainPage = () => {
     const response = await fetch("/api/get-data");
     const json = await response.json();
     setData(json.data);
-    console.log(json);
   };
 
   React.useEffect(() => {
     getData();
   }, []);
 
+  console.log(data);
   console.log(data.block);
   return (
     <div>
       <Navbar />
       <div className="flex items-center justify-center py-15">
-        <div className="pt-14 px-10 pb-14 grid grid-center grid-cols-5 grid-flow-cols gap-5">
+        <div className="pt-14 px-10 pb-14 grid grid-center grid-cols-5 grid-flow-cols gap-8">
           {data.block.map((item) => (
             <div key={item.id_block}>
               <ItemContainer>
@@ -125,7 +125,7 @@ const MainPage = () => {
             <div key={item.id_armor}>
               <ItemContainer>
                 <Link
-                  href={"/block/" + item.id_armor}
+                  href={"/armor/" + item.id_armor}
                   className="object-contain h-fit">
                   <ImageHandler
                     imagePath={"/itemphotos/" + item.p_eq}
@@ -140,7 +140,7 @@ const MainPage = () => {
             <div key={item.id_food}>
               <ItemContainer>
                 <Link
-                  href={"/block/" + item.id_food}
+                  href={"/food/" + item.id_food}
                   className="object-contain h-fit">
                   <ImageHandler
                     imagePath={"/itemphotos/" + item.p_eq}
@@ -155,7 +155,7 @@ const MainPage = () => {
             <div key={item.id_other}>
               <ItemContainer>
                 <Link
-                  href={"/block/" + item.id_other}
+                  href={"/other/" + item.id_other}
                   className="object-contain h-fit">
                   <ImageHandler
                     imagePath={"/itemphotos/" + item.p_eq}
@@ -170,7 +170,7 @@ const MainPage = () => {
             <div key={item.id_tool}>
               <ItemContainer>
                 <Link
-                  href={"/block/" + item.id_tool}
+                  href={"/tool/" + item.id_tool}
                   className="object-contain h-fit">
                   <ImageHandler
                     imagePath={"/itemphotos/" + item.p_eq}
