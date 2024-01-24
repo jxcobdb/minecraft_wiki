@@ -101,7 +101,7 @@ const MainPage = () => {
   const renderItems = (items: any[], idKey: string) => {
     return items.map((item) => (
       <div key={item.id}>
-        <ItemContainer>
+        <ItemContainer type="animated">
           <Link
             href={`/${item.type}/${item.id}`}
             className="object-contain h-fit">

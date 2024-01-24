@@ -86,28 +86,55 @@ const BlockItemPage = () => {
       <Navbar />
       <div className="py-10 justify-center content-center text-center">
         {blockData && (
-          <h2 className="text-5xl font-semibold mb-5 text-white text-center text-4xl">
+          <h2 className="text-5xl font-semibold mb-20 text-white text-center">
             {blockData.name}
           </h2>
         )}
         <div className="flex flex-start flex-cols content-center">
           <div className="flex w-1/2 content-center justify-evenly">
-            <ItemContainer>
-              {blockData && (
-                <ImageHandler
-                  imagePath={"/itemphotos/" + blockData.p_eq}
-                  w="150"
-                  h="150"
-                />
-              )}
+            <ItemContainer type="default">
+              <ImageHandler
+                imagePath={"/itemphotos/" + blockData.p_eq}
+                w="250"
+                h="250"
+              />
             </ItemContainer>
           </div>
-          <div className="flex w-1/2">
-            {blockData && (
-              <div className="text-white ml-16 mr-12 text-xl">
-                {blockData.info}
-              </div>
-            )}
+          <div className="flex-1 mt-2 flex-wrap mr-52">
+            <div
+              className="col-span-1 bg p-4 rounded-lg shadow-md"
+              style={{
+                backgroundImage: 'url("/assets/Background.svg")',
+                backgroundSize: "cover",
+              }}>
+              {blockData && (
+                <div className="text-white text-2xl">{blockData.info}</div>
+              )}
+              {blockData && (
+                <div className="mt-4 text-white text-xl flex justify-center">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>Flammable:</td>
+                        <td>{blockData.flamable === 1 ? "Yes" : "No"}</td>
+                      </tr>
+                      <tr>
+                        <td>Stackable:</td>
+                        <td>{blockData.stackable === 1 ? "Yes" : "No"}</td>
+                      </tr>
+                      <tr>
+                        <td>Hardness:</td>
+                        <td>{blockData.hardness}</td>
+                      </tr>
+                      <tr>
+                        <td>Blast Resistance:</td>
+                        <td>{blockData.blast_res}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
