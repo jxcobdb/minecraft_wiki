@@ -32,7 +32,7 @@ interface Block {
 interface Armor {
   type: string;
   def: number;
-  durabilisty: number;
+  durability: number;
   id: number;
   id_armor_list: number;
   id_material: number;
