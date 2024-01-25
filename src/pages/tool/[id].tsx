@@ -4,73 +4,54 @@ import Navbar from "@/components/Navbar";
 import ImageHandler from "@/components/ImageHandler";
 import ItemContainer from "@/components/ItemContainer";
 
-interface Block {
-  type: "",
-  blast_res: number;
-  flamable: number;
-  hardness: number;
-  id: number;
-  id_world: number;
-  info: string;
-  name: string;
-  p_craft: null;
-  p_eq: string;
-  stackable: number;
-}
+interface Tool {
+    type: string;
+    attack_speed: number;
+    damage: number;
+    dps: number;
+    durability: number;
+    id_material: number;
+    id: number;
+    id_tool_list: number;
+    id_tool_type: number;
+    info: string;
+    mining_speed: number;
+    p_craft: string;
+    p_eq: string;
+  }
 
-interface Com {
-  id_com: number;
-  id_godfather: number;
-  id_father: number;
-  id_item: number;
-  login: string;
-  value: string;
-}
-
-const BlockItemPage = () => {
+const ToolItemPage = () => {
   const router = useRouter();
   const { id, table } = router.query;
 
-  // console.log('ID Item:', id_item);
-  // console.log('Table:', table);
-
-  // const getCom = async () => {
-  //   const response = await fetch("/api/get-data");
-  //   const json = await response.json();
-  //   setData(json.data);
-  //   console.log(json);
-  // };
-
-  // React.useEffect(() => {
-  //   getCom();
-  // }, []);
-
-  const [blockData, setBlockData] = useState<Block>({
+  const [toolData, settoolData] = useState<Tool>({
     type: "",
-    blast_res: 0,
-    flamable: 0,
-    hardness: 0,
+    attack_speed: 0,
+    damage: 0,
+    dps: 0,
+    durability: 0,
+    id_material: 0,
     id: 0,
-    id_world: 0,
+    id_tool_list: 0,
+    id_tool_type: 0,
     info: "",
-    name: "",
-    p_craft: null,
+    mining_speed: 0,
+    p_craft: "",
     p_eq: "",
-    stackable: 0,
   });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `/api/get-item-details?id=${id}&table=block`
+          `/api/get-item-details?id=${id}&table=tool`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const json = await response.json();
         console.log("API Response:", json);
-        setBlockData(json.data.output[0]);
+        settoolData(json.data.output[0]);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -83,24 +64,24 @@ const BlockItemPage = () => {
     <div>
       <Navbar />
       <div className="py-10 justify-center content-center text-center">
-        {blockData && (
+        {toolData && (
           <h2 className="text-5xl font-semibold mb-20 text-white text-center">
-            {blockData.name}
+            {toolData.id_material} {toolData.id_tool_list}
           </h2>
         )}
         <div className="flex flex-start flex-cols content-center">
           <div className="flex w-1/2 content-center justify-evenly">
             <ItemContainer type="default">
               <ImageHandler
-                imagePath={"/itemphotos/" + blockData.p_eq}
+                imagePath={"/itemphotos/" + toolData.p_eq}
                 w="250"
                 h="250"
               />
             </ItemContainer>
-            {blockData.p_craft && (
+            {toolData.p_craft && (
   <ItemContainer type="default">
     <ImageHandler
-      imagePath={"/itemphotos/" + blockData.p_craft}
+      imagePath={"/itemphotos/" + toolData.p_craft}
       w="250"
       h="250"
     />
@@ -113,33 +94,46 @@ const BlockItemPage = () => {
           </div>
           <div className="flex-1 flex-wrap mr-52">
             <div
-              className="col-span-1 bg p-4 rounded-lg">
-              {blockData && (
-                <div className="text-white text-xl ml-6 mr-6">{blockData.info}</div>
+              className="col-span-1 bg p-4 rounded-lg"
+              >
+              {toolData && (
+                <div className="text-white text-xl ml-6 mr-6">{toolData.info}</div>
               )}
-              {blockData && (
+              {toolData && (
                 <div className="mt-16 text-white text-xl flex justify-center">
                   <table>
                     <tbody>
                       <tr>
-                        <td>Flammable:</td>
-                        <td>{blockData.flamable === 1 ? "Yes" : "No"}</td>
+                        <td>Attack Speed:</td>
+                        <td>{toolData.attack_speed}</td>
                       </tr>
                       <tr>
-                        <td>Stackable:</td>
-                        <td>{blockData.stackable === 1 ? "Yes" : "No"}</td>
+                        <td>Damage:</td>
+                        <td>{toolData.damage}</td>
                       </tr>
                       <tr>
-                        <td>Hardness:</td>
-                        <td>{blockData.hardness}</td>
+                        <td>Dps:</td>
+                        <td>{toolData.dps}</td>
                       </tr>
                       <tr>
-                        <td>Blast Resistance:</td>
-                        <td>{blockData.blast_res}</td>
+                        <td>Durabilty:</td>
+                        <td>{toolData.durability === 1 ? "Yes" : "No"}</td>
                       </tr>
                       <tr>
-                        <td>Type:</td>
-                        <td>{blockData.type}</td>
+                        <td>Material:</td>
+                        <td>{toolData.id_material}</td>
+                      </tr>
+                      <tr>
+                        <td>Is weapon?</td>
+                        <td>{toolData.id_tool_list === 1 ? "Yes" : "No"}</td>
+                      </tr>
+                      <tr>
+                        <td>Tool type:</td>
+                        <td>{toolData.id_tool_type}</td>
+                      </tr>
+                      <tr>
+                        <td>Mining speed:</td>
+                        <td>{toolData.mining_speed}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -153,4 +147,4 @@ const BlockItemPage = () => {
   );
 };
 
-export default BlockItemPage;
+export default ToolItemPage;
