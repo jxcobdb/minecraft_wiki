@@ -17,7 +17,7 @@ const Navbar = () => {
       <div className="flex flex-container">
         <ButtonLink bgType="/assets/Logo.svg" to="/" w="270" h="144" />
       </div>
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col justify-center pt-4">
         <div className="flex">
           <ImageHandler imagePath="/assets/MinecraftWiki.svg" w="380" h="50" />
         </div>

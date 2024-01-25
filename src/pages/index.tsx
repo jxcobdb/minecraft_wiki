@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
-import Linia from "@/components/Linia";
+import ContentTag from "@/components/ContentTag";
 import SortBar from "@/components/Sortbar";
 import Link from "next/link";
 import ImageHandler from "@/components/ImageHandler";
 import ItemContainer from "@/components/ItemContainer";
+import ButtonSort from "@/components/ButtonSort";
 
 interface Data {
   block: Block[];
@@ -86,17 +87,28 @@ const MainPage = () => {
   });
 
   const [filterKey, setFilterKey] = useState<string>("all");
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const handleSetFilterKey = (newFilterKey: string) => {
+    setFilterKey(newFilterKey);
+  };
 
   const getData = async () => {
-    const response = await fetch("/api/get-data");
-    const json = await response.json();
-    console.log(json);
-    setData(json.data);
+    try {
+      setLoading(true);
+      const response = await fetch("/api/get-data");
+      const json = await response.json();
+      setData(json.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [filterKey]);
 
   const renderItems = (items: any[], idKey: string) => {
     return items.map((item) => (
@@ -144,20 +156,19 @@ const MainPage = () => {
   return (
     <div>
       <Navbar />
-      <Linia />
-      <SortBar />
+      <ContentTag />
+      <SortBar onButtonClick={handleSetFilterKey} />
 
-      <div className="flex items-center justify-center py-15 z-10">
-        <div className="pt-14 px-10 pb-14 grid grid-center grid-cols-5 grid-flow-cols gap-8 pt-0">
-          {renderItems(getCategoryData(), filterKey)}
+      {loading ? (
+        <p></p>
+      ) : (
+        <div className="flex items-center justify-center py-15 z-10">
+          <div className="pt-14 px-10 pb-14 grid grid-center grid-cols-5 grid-flow-cols gap-8 pt-0">
+            {renderItems(getCategoryData(), filterKey)}
+          </div>
         </div>
-      </div>
-
-      {/* <div>
-        <button onClick={() => setFilterKey("all")}>Show All</button>
-      </div> */}
+      )}
     </div>
   );
 };
-
 export default MainPage;
