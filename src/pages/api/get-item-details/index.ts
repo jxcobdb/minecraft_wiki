@@ -33,6 +33,8 @@ const GetItemData = async (req: NextApiRequest, res: NextApiResponse) => {
         .input('id', sql.Int, parseInt(id, 10))
         .query(`SELECT * FROM ${table} WHERE id = @id`);
 
+        
+
 
 
         res.status(200).json({

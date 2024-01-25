@@ -10,14 +10,14 @@ interface Props {
   onClick: () => void;
 }
 
-const ButtonLink: React.FC<Props> = ({ onClick, bgType, w, h }) => {
+const ButtonSort: React.FC<Props> = ({ onClick, bgType, w, h }) => {
   return (
     <button
       onClick={onClick}
-      className="shadow-xl transition-transform transform hover:scale-105">
+      className="transition-transform transform hover:scale-105 pb-3">
       <ImageHandler imagePath={bgType} w={w} h={h} />
     </button>
   );
 };
 
-export default ButtonLink;
+export default ButtonSort;
