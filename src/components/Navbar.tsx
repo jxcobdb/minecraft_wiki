@@ -29,9 +29,6 @@ const Navbar = () => {
           <li className="flex-1">
             <ButtonLink bgType="/assets/About.svg" to="/about" w="130" h="50" />
           </li>
-          <li className="flex-1">
-            <ButtonLink bgType="/assets/Login.svg" to="/login" w="130" h="50" />
-          </li>
         </ul>
       </div>
     </div>

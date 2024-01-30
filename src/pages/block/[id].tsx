@@ -5,7 +5,7 @@ import ImageHandler from "@/components/ImageHandler";
 import ItemContainer from "@/components/ItemContainer";
 
 interface Block {
-  type: "",
+  type: "";
   blast_res: number;
   flamable: number;
   hardness: number;
@@ -98,24 +98,21 @@ const BlockItemPage = () => {
               />
             </ItemContainer>
             {blockData.p_craft && (
-  <ItemContainer type="default">
-    <ImageHandler
-      imagePath={"/itemphotos/" + blockData.p_craft}
-      w="250"
-      h="250"
-    />
-  </ItemContainer>
-)}
-
-
-
-
+              <ItemContainer type="default">
+                <ImageHandler
+                  imagePath={"/itemphotos/" + blockData.p_craft}
+                  w="250"
+                  h="250"
+                />
+              </ItemContainer>
+            )}
           </div>
           <div className="flex-1 flex-wrap mr-52">
-            <div
-              className="col-span-1 bg p-4 rounded-lg">
+            <div className="col-span-1 bg p-4 rounded-lg">
               {blockData && (
-                <div className="text-white text-xl ml-6 mr-6">{blockData.info}</div>
+                <div className="text-white text-xl ml-6 mr-6">
+                  {blockData.info}
+                </div>
               )}
               {blockData && (
                 <div className="mt-16 text-white text-xl flex justify-center">
@@ -136,10 +133,6 @@ const BlockItemPage = () => {
                       <tr>
                         <td>Blast Resistance:</td>
                         <td>{blockData.blast_res}</td>
-                      </tr>
-                      <tr>
-                        <td>Type:</td>
-                        <td>{blockData.type}</td>
                       </tr>
                     </tbody>
                   </table>

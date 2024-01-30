@@ -5,14 +5,14 @@ import ImageHandler from "@/components/ImageHandler";
 import ItemContainer from "@/components/ItemContainer";
 
 interface Food {
-    type: string;
-    heal: number;
-    id: number;
-    info: string;
-    name_food: string;
-    p_craft: string;
-    p_eq: string;
-  }
+  type: string;
+  heal: number;
+  id: number;
+  info: string;
+  name_food: string;
+  p_craft: string;
+  p_eq: string;
+}
 
 const FoodItemPage = () => {
   const router = useRouter();
@@ -23,8 +23,8 @@ const FoodItemPage = () => {
     heal: 0,
     id: 0,
     info: "",
-    name_food:"",
-    p_craft:"",
+    name_food: "",
+    p_craft: "",
     p_eq: "",
   });
 
@@ -67,20 +67,21 @@ const FoodItemPage = () => {
               />
             </ItemContainer>
             {foodData.p_craft && (
-  <ItemContainer type="default">
-    <ImageHandler
-      imagePath={"/itemphotos/" + foodData.p_craft}
-      w="250"
-      h="250"
-    />
-  </ItemContainer>
-)}
+              <ItemContainer type="default">
+                <ImageHandler
+                  imagePath={"/itemphotos/" + foodData.p_craft}
+                  w="250"
+                  h="250"
+                />
+              </ItemContainer>
+            )}
           </div>
           <div className="flex-1 flex-wrap mr-52">
-            <div
-              className="col-span-1 bg p-4 rounded-lg">
+            <div className="col-span-1 bg p-4 rounded-lg">
               {foodData && (
-                <div className="text-white text-xl ml-6 mr-6">{foodData.info}</div>
+                <div className="text-white text-xl ml-6 mr-6">
+                  {foodData.info}
+                </div>
               )}
               {foodData && (
                 <div className="mt-16 text-white text-xl flex justify-center">
@@ -89,10 +90,6 @@ const FoodItemPage = () => {
                       <tr>
                         <td>Heal: </td>
                         <td>{foodData.heal}</td>
-                      </tr>
-                      <tr>
-                        <td>Type: </td>
-                        <td>{foodData.type}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -107,7 +104,6 @@ const FoodItemPage = () => {
 };
 
 export default FoodItemPage;
-
 
 /*                      <tr>
                         <td>Stackable:</td>

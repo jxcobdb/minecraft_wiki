@@ -35,9 +35,8 @@ const AboutPage = () => {
             Projekt
           </h2>
           <p className="text-white ml-16 mr-12 text-xl text-center">
-            Witaj na naszej stronie! Jesteśmy totalnymi szefami i zrobiliśmy
-            najlepszy projekt ez. Generalnie ta firma to przyszłość Poslkiego
-            frontendu, a Minecraft Wiki od dzisiaj będzie takie także się
+            Witaj na naszej stronie! Generalnie ta firma to przyszłość Poslkiego
+            frontendu, a Minecraft Wiki od dzisiaj będzie tak wyglądać także się
             przyzwyczajajcie
           </p>
         </div>

@@ -5,16 +5,17 @@ import ImageHandler from "@/components/ImageHandler";
 import ItemContainer from "@/components/ItemContainer";
 
 interface Armor {
-    type: string;
-    def: number;
-    durability: number;
-    id: number;
-    id_armor_list: number;
-    id_material: number;
-    info: string;
-    p_craft: string;
-    p_eq: string;
-  }
+  type: string;
+  def: number;
+  durability: number;
+  id: number;
+  id_armor_list: number;
+  id_material: number;
+  info: string;
+  p_craft: string;
+  p_eq: string;
+  name: string;
+}
 
 const ArmorItemPage = () => {
   const router = useRouter();
@@ -28,8 +29,9 @@ const ArmorItemPage = () => {
     id_armor_list: 0,
     id_material: 0,
     info: "",
-    p_craft:"",
+    p_craft: "",
     p_eq: "",
+    name: "",
   });
 
   useEffect(() => {
@@ -58,7 +60,7 @@ const ArmorItemPage = () => {
       <div className="py-10 justify-center content-center text-center">
         {armorData && (
           <h2 className="text-5xl font-semibold mb-20 text-white text-center">
-            {armorData.id_material} {armorData.id_armor_list}
+            {armorData.name}
           </h2>
         )}
         <div className="flex flex-start flex-cols content-center">
@@ -71,21 +73,21 @@ const ArmorItemPage = () => {
               />
             </ItemContainer>
             {armorData.p_craft && (
-  <ItemContainer type="default">
-    <ImageHandler
-      imagePath={"/itemphotos/" + armorData.p_craft}
-      w="250"
-      h="250"
-    />
-  </ItemContainer>
-)}
+              <ItemContainer type="default">
+                <ImageHandler
+                  imagePath={"/itemphotos/" + armorData.p_craft}
+                  w="250"
+                  h="250"
+                />
+              </ItemContainer>
+            )}
           </div>
           <div className="flex-1 flex-wrap mr-52">
-            <div
-              className="col-span-1 bg p-4 rounded-lg"
-              >
+            <div className="col-span-1 bg p-4 rounded-lg">
               {armorData && (
-                <div className="text-white text-xl ml-6 mr-6">{armorData.info}</div>
+                <div className="text-white text-xl ml-6 mr-6">
+                  {armorData.info}
+                </div>
               )}
               {armorData && (
                 <div className="mt-16 text-white text-xl flex justify-center">
@@ -98,10 +100,6 @@ const ArmorItemPage = () => {
                       <tr>
                         <td>Def:</td>
                         <td>{armorData.def}</td>
-                      </tr>
-                      <tr>
-                        <td>Type:</td>
-                        <td>{armorData.type}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -116,7 +114,6 @@ const ArmorItemPage = () => {
 };
 
 export default ArmorItemPage;
-
 
 /*                      <tr>
                         <td>Stackable:</td>

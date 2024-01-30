@@ -31,7 +31,7 @@ const GetDataHandler = async(req: NextApiRequest, res: NextApiResponse) => {
         console.log(err)
         res.status(200).json({
             success: false,
-            reason: 'sie zjebalo',
+            reason: 'sie popsulo',
         })
     } finally {
         pool.close()

@@ -3,14 +3,14 @@ import React from "react";
 const users = [
   {
     name: "Jakub Dąbrowski",
-    imageUrl: "https://i.imgur.com/T3bIcAR.png",
+    imageUrl: "https://imgur.com/fbXmeN9.png",
     imageSize: 190,
     description:
       "Lider projektu, mistrz gitary, dobry bit daj, koneser poprawnie napisanego kodu, od dwóch miesięcy nie płaci swoim pracownikom.",
   },
   {
     name: "Oskar Baranowski",
-    imageUrl: "https://i.imgur.com/T3bIcAR.png",
+    imageUrl: "https://imgur.com/36nPsQl.png",
     imageSize: 190,
     description:
       'Pan i władzca bazy danych,potrafi podłączyć SQL jak mało kto, żyje w przekonaniu "Jeśli coś nie działa, trzeba to wyrzucić z bazy danych".',
