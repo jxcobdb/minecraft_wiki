@@ -5,14 +5,14 @@ import ImageHandler from "@/components/ImageHandler";
 import ItemContainer from "@/components/ItemContainer";
 
 interface Other {
-    type: string;
-    id: number;
-    info: string;
-    name_other: string;
-    p_craft: string;
-    p_eq: string;
-    stackable: number;
-  }
+  type: string;
+  id: number;
+  info: string;
+  name_other: string;
+  p_craft: string;
+  p_eq: string;
+  stackable: number;
+}
 
 const OtherItemPage = () => {
   const router = useRouter();
@@ -23,7 +23,7 @@ const OtherItemPage = () => {
     id: 0,
     info: "",
     name_other: "",
-    p_craft:"",
+    p_craft: "",
     p_eq: "",
     stackable: 0,
   });
@@ -67,23 +67,21 @@ const OtherItemPage = () => {
               />
             </ItemContainer>
             {otherData.p_craft && (
-  <ItemContainer type="default">
-    <ImageHandler
-      imagePath={"/itemphotos/" + otherData.p_craft}
-      w="250"
-      h="250"
-    />
-  </ItemContainer>
-)}
-
-
+              <ItemContainer type="default">
+                <ImageHandler
+                  imagePath={"/itemphotos/" + otherData.p_craft}
+                  w="250"
+                  h="250"
+                />
+              </ItemContainer>
+            )}
           </div>
           <div className="flex-1 flex-wrap mr-52">
-            <div
-              className="col-span-1 bg p-4 rounded-lg"
-              >
+            <div className="col-span-1 bg p-4 rounded-lg">
               {otherData && (
-                <div className="text-white text-xl ml-6 mr-6">{otherData.info}</div>
+                <div className="text-white text-xl ml-6 mr-6">
+                  {otherData.info}
+                </div>
               )}
               {otherData && (
                 <div className="mt-16 text-white text-xl flex justify-center">
@@ -92,10 +90,6 @@ const OtherItemPage = () => {
                       <tr>
                         <td>Stackable:</td>
                         <td>{otherData.stackable === 1 ? "Yes" : "No"}</td>
-                      </tr>
-                      <tr>
-                        <td>Type:</td>
-                        <td>{otherData.type}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -110,7 +104,6 @@ const OtherItemPage = () => {
 };
 
 export default OtherItemPage;
-
 
 /*                      <tr>
                         <td>Stackable:</td>

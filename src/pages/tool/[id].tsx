@@ -5,20 +5,21 @@ import ImageHandler from "@/components/ImageHandler";
 import ItemContainer from "@/components/ItemContainer";
 
 interface Tool {
-    type: string;
-    attack_speed: number;
-    damage: number;
-    dps: number;
-    durability: number;
-    id_material: number;
-    id: number;
-    id_tool_list: number;
-    id_tool_type: number;
-    info: string;
-    mining_speed: number;
-    p_craft: string;
-    p_eq: string;
-  }
+  type: string;
+  attack_speed: number;
+  damage: number;
+  dps: number;
+  durability: number;
+  id_material: number;
+  id: number;
+  id_tool_list: number;
+  id_tool_type: number;
+  info: string;
+  mining_speed: number;
+  p_craft: string;
+  p_eq: string;
+  name: string;
+}
 
 const ToolItemPage = () => {
   const router = useRouter();
@@ -38,6 +39,7 @@ const ToolItemPage = () => {
     mining_speed: 0,
     p_craft: "",
     p_eq: "",
+    name: "",
   });
 
   useEffect(() => {
@@ -66,7 +68,7 @@ const ToolItemPage = () => {
       <div className="py-10 justify-center content-center text-center">
         {toolData && (
           <h2 className="text-5xl font-semibold mb-20 text-white text-center">
-            {toolData.id_material} {toolData.id_tool_list}
+            {toolData.name}
           </h2>
         )}
         <div className="flex flex-start flex-cols content-center">
@@ -79,25 +81,21 @@ const ToolItemPage = () => {
               />
             </ItemContainer>
             {toolData.p_craft && (
-  <ItemContainer type="default">
-    <ImageHandler
-      imagePath={"/itemphotos/" + toolData.p_craft}
-      w="250"
-      h="250"
-    />
-  </ItemContainer>
-)}
-
-
-
-
+              <ItemContainer type="default">
+                <ImageHandler
+                  imagePath={"/itemphotos/" + toolData.p_craft}
+                  w="250"
+                  h="250"
+                />
+              </ItemContainer>
+            )}
           </div>
           <div className="flex-1 flex-wrap mr-52">
-            <div
-              className="col-span-1 bg p-4 rounded-lg"
-              >
+            <div className="col-span-1 bg p-4 rounded-lg">
               {toolData && (
-                <div className="text-white text-xl ml-6 mr-6">{toolData.info}</div>
+                <div className="text-white text-xl ml-6 mr-6">
+                  {toolData.info}
+                </div>
               )}
               {toolData && (
                 <div className="mt-16 text-white text-xl flex justify-center">
